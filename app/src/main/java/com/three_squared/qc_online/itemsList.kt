@@ -50,10 +50,9 @@ class itemsList : Fragment() {
         val alert = AlertDialog.Builder(this.context).setMessage("Item added").create()
         val adapter = itemsListRecyclerViewAdapter(mutableListOf()) { item ->
             mainViewModel.basket.add(item)
-            alert.show()
+            addToBasketDialog.show(
+                childFragmentManager, AddToBasketDialogFragment.TAG)
         }
-
-        val basketButton: FloatingActionButton = view.findViewById(R.id.basketButton)
 
         recyclerView.adapter = adapter
 
@@ -88,7 +87,9 @@ class AddToBasketDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
-            builder.setMessage("Add to basket")
+            val inflater = requireActivity().layoutInflater
+
+            builder.setView(inflater.inflate(R.layout.add_to_basket_dialog, null))
                 .setPositiveButton("yes",
                     DialogInterface.OnClickListener { dialog, id ->
 
@@ -99,5 +100,9 @@ class AddToBasketDialogFragment : DialogFragment() {
                     })
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
+    companion object {
+        const val TAG = "AddToBasketDialog"
     }
 }
