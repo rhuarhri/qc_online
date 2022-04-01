@@ -16,22 +16,6 @@ class MainActivityRepository {
 
     private val basket : MutableList<Item> = mutableListOf()
 
-    suspend fun getMenu() : List<Item> {
-        val retrofitInterface = retroFit.create(RetroFitInterface::class.java)
-
-        val response = retrofitInterface.getMenu().awaitResponse()
-
-        if (response.isSuccessful) {
-            return if (response.body() != null) {
-                response.body()!!
-            } else {
-                listOf<Item>()
-            }
-        } else {
-            return listOf()
-        }
-    }
-
     fun addToBasket(item : Item) {
         basket.add(item)
     }
