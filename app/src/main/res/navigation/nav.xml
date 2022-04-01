@@ -8,12 +8,12 @@
     <fragment
         android:id="@+id/basket"
         android:name="com.three_squared.qc_online.Basket"
-        android:label="fragment_basket"
+        android:label="QC's Orders - Basket"
         tools:layout="@layout/fragment_basket" />
     <fragment
         android:id="@+id/itemsList"
         android:name="com.three_squared.qc_online.itemsList"
-        android:label="fragment_items_list"
+        android:label="QC's Orders - Menu"
         tools:layout="@layout/fragment_items_list" >
         <action
             android:id="@+id/action_itemsList_to_basket"

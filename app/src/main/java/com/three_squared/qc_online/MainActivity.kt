@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.crispsButton -> {
-                    Log.d("BottomNav", "Crisps Button Pressed!")
+                    Log.d("BottomNav", "Cri Button Pressed!")
                     true
                 }
                 else -> false
