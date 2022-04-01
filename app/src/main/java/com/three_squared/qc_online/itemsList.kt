@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.fragment.app.*
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -45,10 +47,10 @@ class itemsList : Fragment() {
 
         recyclerView.setHasFixedSize(true)
 
-//        val popup = Snackbar.make(view, "item added", Snackbar.LENGTH_SHORT)
+        val alert = AlertDialog.Builder(this.context).setMessage("Item added").create()
         val adapter = itemsListRecyclerViewAdapter(mutableListOf()) { item ->
             mainViewModel.basket.add(item)
-//            popup.show()
+            alert.show()
         }
 
         val basketButton: FloatingActionButton = view.findViewById(R.id.basketButton)
@@ -70,6 +72,13 @@ class itemsList : Fragment() {
 
         itemListViewModel.getMenu()
 
+
+        val basketButton : FloatingActionButton = view.findViewById(R.id.basketButton)
+
+        basketButton.setOnClickListener {
+            findNavController().navigate(R.id.basket, null)
+        }
+
             return view
     }
 }
@@ -79,16 +88,14 @@ class AddToBasketDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
-            val inflater = requireActivity().layoutInflater
-
-            builder.setView(inflater.inflate(R.layout.add_to_basket_dialog, null))
-                .setPositiveButton("Add to Basket",
+            builder.setMessage("Add to basket")
+                .setPositiveButton("yes",
                     DialogInterface.OnClickListener { dialog, id ->
 
                     })
                 .setNegativeButton("Cancel",
                     DialogInterface.OnClickListener { dialog, id ->
-
+                        dialog.dismiss()
                     })
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
