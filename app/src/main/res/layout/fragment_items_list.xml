@@ -11,42 +11,6 @@
         android:layout_height="fill_parent"
         android:orientation="vertical" >
 
-        <ScrollView
-            android:id="@+id/scrollView1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/bagelsButton"
-                    android:background="@android:color/transparent"
-                    android:textColor="#000"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bagels" />
-
-                <Button
-                    android:id="@+id/crispsButton"
-                    android:background="@android:color/transparent"
-                    android:textColor="#000"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Crisps" />
-
-                <Button
-                    android:id="@+id/drinksButton"
-                    android:background="@android:color/transparent"
-                    android:textColor="#000"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Drinks" />
-            </LinearLayout>
-        </ScrollView>
-
         <TableLayout
             android:id="@+id/simpleTableLayout"
             android:layout_width="match_parent"
@@ -88,14 +52,32 @@
                             android:layout_height="0dp"
                             android:layout_weight="1" />
 
+                        <TextView
+
+                            android:id="@+id/itemPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="18dip"
+                            android:text="£4.99"
+                            android:textColor="#000"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
                         <Button
                             android:id="@+id/addItemButton"
-                            android:layout_width="240px"
+                            android:layout_width="120px"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="24dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@android:color/transparent"
                             android:insetLeft="0dp"
                             android:insetRight="0dp"
-                            android:text="+ Add" />
+                            android:maxWidth="120px"
+                            android:minWidth="120px"
+                            android:text="+"
+                            android:textColor="@color/black"
+                            android:textSize="24dp"
+                            app:strokeColor="@color/black"
+                            app:strokeWidth="3px" />
                     </LinearLayout>
 
                     <TextView

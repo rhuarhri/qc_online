@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bagelsButton"
+        android:enabled="true"
+        android:icon="@drawable/bagel"
+        android:title="Bagels"/>
+    <item
+        android:id="@+id/specialsButton"
+        android:enabled="true"
+        android:icon="@drawable/specials"
+        android:title="Specials"/>
+    <item
+        android:id="@+id/drinksButton"
+        android:enabled="true"
+        android:icon="@drawable/drinks"
+        android:title="Drinks"/>
+    <item
+        android:id="@+id/crispsButton"
+        android:enabled="true"
+        android:icon="@drawable/crisps"
+        android:title="Crisps"/>
+</menu>

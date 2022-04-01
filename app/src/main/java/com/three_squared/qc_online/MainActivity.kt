@@ -1,6 +1,7 @@
 package com.three_squared.qc_online
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -11,6 +12,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
 
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         var drawerLayout: DrawerLayout? = null
         var actionBarDrawerToggle: ActionBarDrawerToggle? = null
         val navView: NavigationView = findViewById(R.id.nav_view)
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
 
         appBarConfiguration = AppBarConfiguration(
             navController.graph, drawerLayout
@@ -35,6 +38,28 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.bagelsButton -> {
+                    Log.d("BottomNav", "Bagels Button Pressed!")
+                    true
+                }
+                R.id.specialsButton -> {
+                    Log.d("BottomNav", "Specials Button Pressed!")
+                    true
+                }
+                R.id.drinksButton -> {
+                    Log.d("BottomNav", "Drinks Button Pressed!")
+                    true
+                }
+                R.id.crispsButton -> {
+                    Log.d("BottomNav", "Crisps Button Pressed!")
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
