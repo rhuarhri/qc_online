@@ -4,16 +4,16 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.viewModels
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.*
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -45,11 +45,13 @@ class itemsList : Fragment() {
 
         recyclerView.setHasFixedSize(true)
 
-        val popup = Snackbar.make(view, "item added", Snackbar.LENGTH_SHORT)
+//        val popup = Snackbar.make(view, "item added", Snackbar.LENGTH_SHORT)
         val adapter = itemsListRecyclerViewAdapter(mutableListOf()) { item ->
             mainViewModel.basket.add(item)
-            popup.show()
+//            popup.show()
         }
+
+        val basketButton: FloatingActionButton = view.findViewById(R.id.basketButton)
 
         recyclerView.adapter = adapter
 
@@ -76,18 +78,18 @@ class AddToBasketDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
-            // Use the Builder class for convenient dialog construction
             val builder = AlertDialog.Builder(it)
-            builder.setMessage("Test Dialogue")
-                .setPositiveButton("Start",
+            val inflater = requireActivity().layoutInflater
+
+            builder.setView(inflater.inflate(R.layout.add_to_basket_dialog, null))
+                .setPositiveButton("Add to Basket",
                     DialogInterface.OnClickListener { dialog, id ->
-                        // START THE GAME!
+
                     })
-                .setNegativeButton("Stop",
+                .setNegativeButton("Cancel",
                     DialogInterface.OnClickListener { dialog, id ->
-                        // User cancelled the dialog
+
                     })
-            // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }

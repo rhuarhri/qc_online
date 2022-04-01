@@ -5,6 +5,8 @@
       <map>
         <entry key="app/src/main/res/drawable-anydpi/plusIcon.xml" value="0.1845" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2670206736648698" />
+        <entry key="app/src/main/res/layout/add_to_basket_dialog.xml" value="0.29781191283808656" />
+        <entry key="app/src/main/res/layout/basket_item_layout.xml" value="0.12310030395136778" />
         <entry key="app/src/main/res/layout/fragment_basket.xml" value="0.20697463768115942" />
         <entry key="app/src/main/res/layout/fragment_items_list.xml" value="0.19018402099609377" />
         <entry key="app/src/main/res/layout/item_layout.xml" value="0.6107729106930131" />
