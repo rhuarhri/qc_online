@@ -1,11 +1,15 @@
 package com.three_squared.qc_online
 
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.viewModels
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,12 +38,13 @@ class itemsList : Fragment() {
 
         val mainViewModel = (activity as MainActivity).mainActivityViewModel
 
+        val addToBasketDialog = AddToBasketDialogFragment()
+
         val recyclerView : RecyclerView = view.findViewById(R.id.itemsRecyclerView)
 
         recyclerView.setHasFixedSize(true)
 
         val adapter = itemsListRecyclerViewAdapter(mutableListOf()) { item ->
-
         }
 
         recyclerView.adapter = adapter
@@ -60,5 +65,26 @@ class itemsList : Fragment() {
         itemListViewModel.getMenu()
 
             return view
+    }
+}
+
+class AddToBasketDialogFragment : DialogFragment() {
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return activity?.let {
+            // Use the Builder class for convenient dialog construction
+            val builder = AlertDialog.Builder(it)
+            builder.setMessage("Test Dialogue")
+                .setPositiveButton("Start",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // START THE GAME!
+                    })
+                .setNegativeButton("Stop",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // User cancelled the dialog
+                    })
+            // Create the AlertDialog object and return it
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
     }
 }

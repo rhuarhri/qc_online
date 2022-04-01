@@ -72,11 +72,24 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.navigation_menu, menu)
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        menuInflater.inflate(R.menu.navigation_menu, menu)
+//        return true
+//    }
+
+//    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+//        R.id.action_basket -> {
+//            // User chose the "Settings" item, show the app settings UI...
+//            true
+//        }
+//
+//        else -> {
+//            // If we got here, the user's action was not recognized.
+//            // Invoke the superclass to handle it.
+//            super.onOptionsItemSelected(item)
+//        }
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         println("item pressed was ${item.title}")
