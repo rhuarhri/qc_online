@@ -14,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * A simple [Fragment] subclass.
@@ -44,7 +45,10 @@ class itemsList : Fragment() {
 
         recyclerView.setHasFixedSize(true)
 
+        val popup = Snackbar.make(view, "item added", Snackbar.LENGTH_SHORT)
         val adapter = itemsListRecyclerViewAdapter(mutableListOf()) { item ->
+            mainViewModel.basket.add(item)
+            popup.show()
         }
 
         recyclerView.adapter = adapter
