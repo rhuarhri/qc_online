@@ -11,8 +11,15 @@ class MainActivityViewModel : ViewModel() {
 
     var repository = MainActivityRepository()
 
-    var menu : MutableLiveData<List<Item>> = MutableLiveData(listOf())
+    var basket : MutableList<Item> = mutableListOf()
 
+    fun addToBasket(item : Item) {
+        basket.add(item)
+    }
+
+    fun removeFromBasket(item : Item) {
+        basket.remove(item)
+    }
 
 
 }
