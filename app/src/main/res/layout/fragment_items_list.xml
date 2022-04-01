@@ -11,90 +11,47 @@
         android:layout_height="fill_parent"
         android:orientation="vertical" >
 
-        <TableLayout
-            android:id="@+id/simpleTableLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:stretchColumns="0">
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
-            <TableRow
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                android:id="@+id/firstRow"
-                android:layout_margin="5dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:orientation="vertical"
+                <Button
+                    android:id="@+id/bagelsButton"
+                    android:background="@android:color/transparent"
+                    android:textColor="#000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/itemContainer">
+                    android:text="Bagels" />
 
-                    <LinearLayout
-                        android:id="@+id/itemHeaderContainer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                <Button
+                    android:id="@+id/crispsButton"
+                    android:background="@android:color/transparent"
+                    android:textColor="#000"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Crisps" />
 
-                        <TextView
+                <Button
+                    android:id="@+id/drinksButton"
+                    android:background="@android:color/transparent"
+                    android:textColor="#000"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Drinks" />
+            </LinearLayout>
+        </ScrollView>
 
-                            android:id="@+id/itemName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="18dip"
-                            android:text="A Bagel"
-                            android:textColor="#000"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/itemsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1" />
-
-                        <TextView
-
-                            android:id="@+id/itemPrice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="18dip"
-                            android:text="£4.99"
-                            android:textColor="#000"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                        <Button
-                            android:id="@+id/addItemButton"
-                            android:layout_width="120px"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="20dp"
-                            android:background="@android:color/transparent"
-                            android:insetLeft="0dp"
-                            android:insetRight="0dp"
-                            android:maxWidth="120px"
-                            android:minWidth="120px"
-                            android:text="+"
-                            android:textColor="@color/black"
-                            android:textSize="24dp"
-                            app:strokeColor="@color/black"
-                            app:strokeWidth="3px" />
-                    </LinearLayout>
-
-                    <TextView
-
-                        android:id="@+id/itemDescription"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="18dip"
-                        android:text="This is a very bagel, bagel, that looks like a bagel."
-                        android:textColor="#000"
-                        android:textSize="12dp" />
-
-
-                </LinearLayout>
-
-            </TableRow>
-        </TableLayout>
     </LinearLayout>
 
 </FrameLayout>
