@@ -26,9 +26,9 @@ class itemListRepository {
         bagels.add(
             Item(
                 id = "1",
-                name = "bagel 1",
-                price = 12.50,
-                description = "bagel",
+                name = "ham bagel",
+                price = 2.50,
+                description = "bagel with ham",
                 inStock = true,
                 kind = "bagel"
             ))
@@ -37,7 +37,7 @@ class itemListRepository {
         bagels.add(
             Item(
                 id = "2",
-                name = "bagel 2",
+                name = "egg bagel",
                 price = 12.50,
                 description = "bagel",
                 inStock = true,
