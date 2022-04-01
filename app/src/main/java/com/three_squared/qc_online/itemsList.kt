@@ -12,8 +12,11 @@ import androidx.activity.viewModels
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -45,10 +48,10 @@ class itemsList : Fragment() {
 
         recyclerView.setHasFixedSize(true)
 
-        val popup = Snackbar.make(view, "item added", Snackbar.LENGTH_SHORT)
+        val alert = AlertDialog.Builder(this.context).setMessage("Item added").create()
         val adapter = itemsListRecyclerViewAdapter(mutableListOf()) { item ->
             mainViewModel.basket.add(item)
-            popup.show()
+            alert.show()
         }
 
         recyclerView.adapter = adapter
@@ -68,6 +71,13 @@ class itemsList : Fragment() {
 
         itemListViewModel.getMenu()
 
+
+        val basketButton : FloatingActionButton = view.findViewById(R.id.basketButton)
+
+        basketButton.setOnClickListener {
+            findNavController().navigate(R.id.basket, null)
+        }
+
             return view
     }
 }
@@ -78,14 +88,14 @@ class AddToBasketDialogFragment : DialogFragment() {
         return activity?.let {
             // Use the Builder class for convenient dialog construction
             val builder = AlertDialog.Builder(it)
-            builder.setMessage("Test Dialogue")
-                .setPositiveButton("Start",
+            builder.setMessage("Add to basket")
+                .setPositiveButton("yes",
                     DialogInterface.OnClickListener { dialog, id ->
                         // START THE GAME!
                     })
                 .setNegativeButton("Stop",
                     DialogInterface.OnClickListener { dialog, id ->
-                        // User cancelled the dialog
+                        dialog.dismiss()
                     })
             // Create the AlertDialog object and return it
             builder.create()
